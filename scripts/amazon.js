@@ -75,7 +75,7 @@ document.querySelectorAll('.js-add-to-cart')
   .forEach((button) => {
 
     let addedMessageTimeoutId;
-    
+
     button.addEventListener('click', () => {
       const { productId } = button.dataset;
       addToCart(productId);
