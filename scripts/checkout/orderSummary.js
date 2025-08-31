@@ -1,4 +1,4 @@
-import { cart, removeFromCart, calculateCartQuantity, updateQuantity,updateDeliveryOption} from '../../data/cart.js';
+import { cart, removeFromCart, calculateCartQuantity, updateQuantity, updateDeliveryOption} from '../../data/cart.js';
 import { products, getProduct } from '../../data/products.js';
 import { formatCurrency } from '../utils/money.js';
 import { hello } from 'https://unpkg.com/supersimpledev@1.0.1/hello.esm.js';
@@ -163,27 +163,53 @@ export function renderOrderSummary() {
         link.addEventListener('click', () => {
           const productId = link.dataset.productId;
 
-          const container = document.querySelector(
-            `.js-cart-item-container-${productId}`
-          );
-          container.classList.remove('is-editing-quantity');
-
           const quantityInput = document.querySelector(
-            `js-quantity-input-${productId}`
+            `.js-quantity-input-${productId}`
           );
-          const newQuantity = Number(quantityInput.value);
 
-          updateQuantity(productId, newQuantity);
+          if (!quantityInput) return;
 
-          const quantityLabel = document.querySelector(
-            `.js-quantity-label-${productId}`
-          );
-          quantityLabel.innerHTML = newQuantity;
-
-          updateCartQuantity();
+          handleUpdateQuantity(productId, quantityInput);
         });
+
+        const productId = link.dataset.productId;
+        const quantityInput = document.querySelector(
+          `.js-quantity-input-${productId}`
+        );
+
+        if (quantityInput) {
+          quantityInput.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+              handleUpdateQuantity(productId, quantityInput);
+            }
+          });
+        }
       });
 
+    function handleUpdateQuantity(productId, quantityInput) {
+      const newQuantity = Number(quantityInput.value);
+
+      if (newQuantity <= 0 || newQuantity >= 1000) {
+        alert('Cart items must be at least 1 and also less than 1000');
+        return;
+      }
+
+      updateQuantity(productId, newQuantity);
+
+      const container = document.querySelector(
+        `.js-cart-item-container-${productId}`
+      );
+      container.classList.remove('is-editing-quantity');
+
+      const quantityLabel = document.querySelector(
+        `.js-quantity-label-${productId}`
+      );
+      quantityLabel.innerHTML = newQuantity;
+
+      updateCartQuantity();
+
+      renderPaymentSummary();
+    }
 
   document.querySelectorAll('.js-delivery-option')
     .forEach((element) => {
