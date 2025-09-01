@@ -24,7 +24,7 @@ export function renderOrderSummary() {
       'days'
     );
     const dateString = deliveryDate.format(
-      'dddd, MMMM D YYYY'
+      'dddd, D MMMM YYYY.'
     );
 
     cartSummaryHTML += `
@@ -85,7 +85,7 @@ export function renderOrderSummary() {
         'days'
       );
       const dateString = deliveryDate.format(
-        'dddd, MMMM D YYYY'
+        'dddd, D MMMM YYYY.'
       );
 
       const priceString = deliveryOption.priceCents === 0
