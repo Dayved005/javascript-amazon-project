@@ -31,10 +31,10 @@ export function addToCart(productId) {
     }
   });
 
-  // const quantitySelector = document.querySelector(
-  //   `.js-quantity-selector-${productId}`
-  // );
-  // const quantity = Number(quantitySelector.value);
+  const quantitySelector = document.querySelector(
+    `.js-quantity-selector-${productId}`
+  );
+  const quantity = Number(quantitySelector.value);
 
   if (matchingItem) {
     matchingItem.quantity += 1;

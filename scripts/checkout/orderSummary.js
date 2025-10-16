@@ -143,8 +143,8 @@ export function renderOrderSummary() {
     function updateCartQuantity() {
       const cartQuantity = calculateCartQuantity();
 
-    //   document.querySelector('.js-return-to-home-link')
-    //     .innerHTML = `${cartQuantity} items`;
+      document.querySelector('.js-return-to-home-link')
+        .innerHTML = `${cartQuantity} items`;
     }
 
     updateCartQuantity();
