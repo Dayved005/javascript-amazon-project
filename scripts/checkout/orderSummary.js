@@ -44,7 +44,7 @@ export function renderOrderSummary() {
               ${matchingProduct.name}
             </div>
             <div class="product-price">
-              $${formatCurrency(matchingProduct.priceCents)}
+              ${matchingProduct.getPrice()}
             </div>
             <div class="product-quantity
               js-product-quantity-${matchingProduct.id}">
@@ -192,8 +192,8 @@ export function renderOrderSummary() {
     function handleUpdateQuantity(productId, quantityInput) {
       const newQuantity = Number(quantityInput.value);
 
-      if (newQuantity <= 0 || newQuantity >= 1000) {
-        alert('Cart items must be at least 1 and also less than 1000');
+      if (newQuantity < 0 || newQuantity >= 1000) {
+        alert('Cart items must be at least 0 and also less than 1000');
         return;
       }
 
