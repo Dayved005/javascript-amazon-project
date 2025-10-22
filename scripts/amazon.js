@@ -78,7 +78,15 @@ document.querySelectorAll('.js-add-to-cart')
 
     button.addEventListener('click', () => {
       const { productId } = button.dataset;
-      addToCart(productId);
+
+      // Get the selected quantity from the dropdown
+      const quantitySelector = document.querySelector(
+        `.js-quantity-selector-${productId}`
+      );
+      const quantity = Number(quantitySelector.value);
+
+      // Add the product to the cart with the selected quantity
+      addToCart(productId, quantity);
       updateCartQuantity();
       
       const addedMessage = document.querySelector(
