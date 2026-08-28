@@ -18,7 +18,7 @@ function renderProductsGrid() {
     filteredProducts = products.filter((product) => {
       let matchingKeyword = false;
 
-      product.keywords.forEach(() => {
+      product.keywords.forEach((keyword) => {
         if (keyword.toLowerCase().includes(search.toLowerCase())) {
           matchingKeyword = true;
         }
@@ -131,6 +131,8 @@ function renderProductsGrid() {
         addedMessageTimeoutId = timeoutId;
       });
     });
+  
+  console.log(document.querySelector('.js-search-button'));
   
   document.querySelector('.js-search-button')
     .addEventListener('click', () => {
