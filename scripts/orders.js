@@ -4,25 +4,6 @@ import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
 import formatCurrency from "./utils/money.js";
 import { addToCart, calculateCartQuantity } from "../data/cart.js"
 
-export const orders = JSON.parse(localStorage.getItem('orders')) || [];
-
-export function addOrder(order) {
-  orders.unshift(order);
-  saveToStorage();
-}
-
-export function getOrder(orderId) {
-  let matchingOrder;
-
-  orders.forEach((order) => {
-    if (order.id === orderId) {
-      matchingOrder = order;
-    }
-  });
-
-  return matchingOrder;
-}
-
 function saveToStorage() {
   localStorage.setItem('order', JSON.stringify(orders));
 }
