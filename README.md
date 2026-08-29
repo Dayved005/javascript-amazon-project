@@ -6,7 +6,7 @@ This project was created as a hands-on JavaScript development project to practic
 
 ## 🚀 Live Demo
 
-**[View the live website](YOUR-VERCEL-LINK-HERE)**
+**[View the live website](https://dayved-amazon-project-clone.vercel.app/)**
 
 ## 📸 Features
 
