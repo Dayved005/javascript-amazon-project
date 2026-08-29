@@ -5,65 +5,94 @@
 .products-grid {
   display: grid;
 
-  /* - In CSS Grid, 1fr means a column will take up the
-       remaining space in the grid.
-     - If we write 1fr 1fr ... 1fr; 8 times, this will
-       divide the grid into 8 columns, each taking up an
-       equal amount of the space.
-     - repeat(8, 1fr); is a shortcut for repeating "1fr"
-       8 times (instead of typing out "1fr" 8 times).
-       repeat(...) is a special property that works with
-       display: grid; */
+  /*
+    In CSS Grid, 1fr means a column will take up the
+    remaining space in the grid.
+
+    repeat(8, 1fr) divides the grid into 8 equal columns.
+  */
   grid-template-columns: repeat(8, 1fr);
 }
 
-/* @media is used to create responsive design (making the
-   website look good on any screen size). This @media
-   means when the screen width is 2000px or less, we
-   will divide the grid into 7 columns instead of 8. */
+
+/* ========================================
+   RESPONSIVE PRODUCT GRID
+   ======================================== */
+
+/*
+  At 2000px or less:
+  7 columns
+*/
 @media (max-width: 2000px) {
   .products-grid {
     grid-template-columns: repeat(7, 1fr);
   }
 }
 
-/* This @media means when the screen width is 1600px or
-   less, we will divide the grid into 6 columns. */
+/*
+  At 1600px or less:
+  6 columns
+*/
 @media (max-width: 1600px) {
   .products-grid {
     grid-template-columns: repeat(6, 1fr);
   }
 }
 
+/*
+  At 1300px or less:
+  5 columns
+*/
 @media (max-width: 1300px) {
   .products-grid {
     grid-template-columns: repeat(5, 1fr);
   }
 }
 
+/*
+  At 1000px or less:
+  4 columns
+*/
 @media (max-width: 1000px) {
   .products-grid {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
+/*
+  At 800px or less:
+  3 columns
+*/
 @media (max-width: 800px) {
   .products-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
+/*
+  At 575px or less:
+  2 columns
+*/
 @media (max-width: 575px) {
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
+/*
+  At 450px or less:
+  1 column
+*/
 @media (max-width: 450px) {
   .products-grid {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* ========================================
+   PRODUCT CONTAINER
+   ======================================== */
 
 .product-container {
   padding-top: 40px;
@@ -78,6 +107,11 @@
   flex-direction: column;
 }
 
+
+/* ========================================
+   PRODUCT IMAGE
+   ======================================== */
+
 .product-image-container {
   display: flex;
   justify-content: center;
@@ -88,12 +122,17 @@
 }
 
 .product-image {
-  /* Images will overflow their container by default. To
-    prevent this, we set max-width and max-height to 100%
-    so they stay inside their container. */
+  /*
+    Prevent images from overflowing their container.
+  */
   max-width: 100%;
   max-height: 100%;
 }
+
+
+/* ========================================
+   PRODUCT INFORMATION
+   ======================================== */
 
 .product-name {
   height: 40px;
@@ -103,6 +142,7 @@
 .product-rating-container {
   display: flex;
   align-items: center;
+
   margin-bottom: 10px;
 }
 
@@ -126,9 +166,19 @@
   margin-bottom: 17px;
 }
 
+
+/* ========================================
+   PRODUCT SPACER
+   ======================================== */
+
 .product-spacer {
   flex: 1;
 }
+
+
+/* ========================================
+   ADDED TO CART MESSAGE
+   ======================================== */
 
 .added-to-cart {
   color: rgb(6, 125, 98);
@@ -136,11 +186,14 @@
 
   display: flex;
   align-items: center;
+
   margin-bottom: 8px;
 
-  /* At first, the "Added to cart" message will
-     be invisible. Use JavaScript to change the
-     opacity and make it visible. */
+  /*
+    The message starts invisible.
+    JavaScript changes the opacity when
+    the product is added to the cart.
+  */
   opacity: 0;
 }
 
@@ -149,12 +202,143 @@
   margin-right: 5px;
 }
 
+.added-to-cart-visible {
+  opacity: 1;
+}
+
+
+/* ========================================
+   ADD TO CART BUTTON
+   ======================================== */
+
 .add-to-cart-button {
   width: 100%;
   padding: 8px;
   border-radius: 50px;
 }
 
-.added-to-cart-visible {
-  opacity: 1;
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+.site-footer {
+  margin-top: 60px;
+  padding: 35px 20px;
+
+  background-color: #131921;
+  color: white;
+
+  text-align: center;
+}
+
+
+/* Main footer credit */
+
+.footer-credit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+
+  font-size: 15px;
+}
+
+
+/* Your name */
+
+.footer-credit strong {
+  color: #ff9900;
+}
+
+
+/* Bullet between the text */
+
+.footer-divider {
+  color: #888;
+}
+
+
+/* Footer description */
+
+.footer-subtext {
+  margin-top: 10px;
+
+  color: #aaa;
+
+  font-size: 13px;
+}
+
+
+/* ========================================
+   FOOTER RESPONSIVE DESIGN
+   ======================================== */
+
+/*
+  Tablets and smaller screens
+*/
+
+@media (max-width: 800px) {
+  .site-footer {
+    margin-top: 40px;
+    padding: 30px 15px;
+  }
+
+  .footer-credit {
+    font-size: 14px;
+  }
+
+  .footer-subtext {
+    font-size: 12px;
+  }
+}
+
+
+/*
+  Mobile phones
+*/
+
+@media (max-width: 575px) {
+  .site-footer {
+    margin-top: 30px;
+    padding: 25px 15px;
+  }
+
+  .footer-credit {
+    flex-direction: column;
+    gap: 5px;
+
+    font-size: 14px;
+  }
+
+  .footer-divider {
+    display: none;
+  }
+
+  .footer-subtext {
+    line-height: 1.5;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+
+/*
+  Very small phones
+*/
+
+@media (max-width: 450px) {
+  .site-footer {
+    padding: 22px 12px;
+  }
+
+  .footer-credit {
+    font-size: 13px;
+  }
+
+  .footer-subtext {
+    font-size: 11px;
+  }
 }
